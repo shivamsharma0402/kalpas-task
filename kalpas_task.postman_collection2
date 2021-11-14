@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "bfa23de4-9c7c-484d-92fe-efa824a81d71",
+		"name": "kalpas_task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "file upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Shivam/Downloads/myFile0.csv"
+						}
+					]
+				},
+				"url": "http://localhost:3000/fileUpload"
+			},
+			"response": []
+		},
+		{
+			"name": "create record",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "1010",
+							"contentType": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "er.sjoji@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "shivam",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "sharma",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/createRecord"
+			},
+			"response": []
+		},
+		{
+			"name": "read record",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/readRecord?userId=1010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"readRecord"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1010"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update record",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "updatedUserId",
+							"value": "10100",
+							"contentType": "",
+							"type": "text"
+						},
+						{
+							"key": "updatedEmail",
+							"value": "er.sjoji@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "updatedFirstname",
+							"value": "shiv",
+							"type": "text"
+						},
+						{
+							"key": "updatedLastname",
+							"value": "sharm",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/updateRecord?userId=1010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"updateRecord"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1010"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete record",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/updateRecord?userId=1010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"updateRecord"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1010"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
