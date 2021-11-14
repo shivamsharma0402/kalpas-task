@@ -8,9 +8,9 @@ const {
   updateRecordController,
   deleteRecordController,
   adminLoginController,
-  } = require('../controllers/userControllers');
+  } = require('../controllers/user.controllers');
 
-const adminAuth = require('../middlewares/adminAuth');
+const adminAuth = require('../middlewares/adminAuth.middleware');
 
 const router = express.Router();
 

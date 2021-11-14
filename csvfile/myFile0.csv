@@ -1,4 +1,4 @@
-username,email,firstname,lastname
+username,email,name.firstname,name.lastname
 100,Kate.Halla@yopmail.com,Kate,Halla
 101,Krystle.Thornburg@yopmail.com,Krystle,Thornburg
 102,Lucy.Tacye@yopmail.com,Lucy,Tacye

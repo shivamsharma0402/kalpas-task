@@ -11,7 +11,7 @@ const fileUpload = require('./config/multer');
 const errorHandler = require('./config/errorHandler');
 
 
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/user.routes');
 
 
 

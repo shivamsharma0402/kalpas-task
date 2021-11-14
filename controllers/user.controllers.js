@@ -1,4 +1,4 @@
-const File = require("../models/file");
+const File = require("../models/file.model");
 const csvtojson = require('csvtojson');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator/check');
@@ -32,7 +32,7 @@ exports.fileUploadController = async (req,res,next)=>{
     if(!req.file){
       console.log('failed, file not fetched');
       const error = new Error("file format is not csv");
-      error.statusCode = 401;
+      error.statusCode = 422;
       throw error;
     }
     const data = await csvtojson().fromFile(req.file.path);
@@ -63,8 +63,10 @@ exports.createRecordController = async (req,res,next)=>{
     const record = new File ({
       username: userId,
       email: email,
-      firstname: firstname,
-      lastname: lastname
+      name: {
+        firstname: firstname,
+        lastname: lastname
+      }
     });
     await record.save();
     return res.status(201).json({ message: "record saved successfully", data: record })
@@ -114,10 +116,10 @@ exports.updateRecordController = async (req,res,next)=>{
     if(record){
       record.username = updatedUserId;
       record.email = updatedEmail;
-      record.firstname = updatedFirstname;
-      record.lastname = updatedLastname;
+      record.name.firstname = updatedFirstname;
+      record.name.lastname = updatedLastname;
       await record.save();
-      return res.status(201).json({ message: "record updated successfully", data: record });
+      return res.status(200).json({ message: "record updated successfully", data: record });
     }
     else {
       const error = new Error("No record exist for this userId")
@@ -137,12 +139,15 @@ exports.deleteRecordController = async (req,res,next)=>{
   const { userId } = req.query;
   console.log(userId);
   try {
-    const record = await File.deleteOne({ username: userId })
-    if(record)
-      return res.status(201).json({ message: "record deleted successfully", data: record });
-    else {
+    const record = await File.deleteOne({ username: userId });
+    console.log(record.deletedCount);
+    if(record.deletedCount) {
+      console.log(record.deletedCount);
+      return res.status(204).json({ message: "record deleted successfully", data: record });
+    }
+      else {
       const error = new Error("No record exist for this userId")
-      error.statusCode=401;
+      error.statusCode=404;
       throw error;
     }
 

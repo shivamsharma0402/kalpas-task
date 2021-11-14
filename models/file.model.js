@@ -13,12 +13,14 @@ const fileSchema = new Schema({
     required: true,
     unique: true
   },
-  firstname: {
-      type: String,
-      required: true
-  },
-  lastname: {
-    type: String
+  name: {
+        firstname: {
+        type: String,
+        required: true
+      },
+        lastname: {
+          type: String
+      }
   }
 });
 
