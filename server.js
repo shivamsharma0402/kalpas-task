@@ -20,6 +20,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(fileUpload);
+console.log('dsadasds');
 
 
 console.log("=============== server starts ===================");
